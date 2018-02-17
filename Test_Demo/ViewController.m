@@ -16,10 +16,9 @@
     CLLocationManager *locationManager;
     CLLocationCoordinate2D coordinates;
     double currentSpeed,previousSpeed;
-    NSTimer *mainTimer, *captureIntervalTimer;
+    NSTimer *captureIntervalTimer;
     NSMutableArray *ary_IntervalRange;
     int currentInterval, speedRange;
-    NSMutableArray *ary_Speed;
 }
 
 @end
@@ -44,22 +43,6 @@
     currentInterval = -1;
     speedRange = 0;
     
-    
-    ary_Speed = [[NSMutableArray alloc]initWithObjects:@"70",@"60",@"90",@"50",@"80", nil];
-    
-    mainTimer = [NSTimer scheduledTimerWithTimeInterval:20 repeats:YES block:^(NSTimer * _Nonnull timer)
-                            {
-                                CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(12.00, 30.00);
-                                int lowerBound = 0;
-                                int upperBound = 4;
-                                int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
-
-                                NSLog(@"timer called :%@",[ary_Speed objectAtIndex:rndValue]);
-                                [self callTimer:[[ary_Speed objectAtIndex:rndValue] doubleValue]];
-
-                            }];
-    
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)trackingSwitch:(UISwitch *)sender
@@ -76,8 +59,6 @@
     }
     else
     {
-        [mainTimer invalidate];
-        mainTimer = nil;
         [locationManager stopUpdatingLocation];
     }
 }
@@ -87,8 +68,7 @@
     CLLocation *location = locations.lastObject;
     double speed = location.speed*3.6;
     coordinates = location.coordinate;
-    NSLog(@"%f lat:%f, long:%f", speed,location.coordinate.latitude,location.coordinate.longitude);
-   // [self callTimer:90];
+    [self callTimer:speed];
 }
 
 -(void)callTimer:(double)speedValue
@@ -147,8 +127,6 @@
         
         captureIntervalTimer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:YES block:^(NSTimer * _Nonnull timer)
                                 {
-                                    NSLog(@"save timer called:%d",interval);
-                                    NSLog(@"new lat:%f, long:%f", coordinates.latitude,coordinates.longitude);
                                     [self captureLocation:timer.timeInterval];
                                 }];
     }
