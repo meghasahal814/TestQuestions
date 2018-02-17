@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="31" id="w1N-RM-9b5"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="trackingSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="2zL-qF-Cw8"/>
+                                    <action selector="trackingSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="LYe-NT-vot"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Location Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-zb-hwe">

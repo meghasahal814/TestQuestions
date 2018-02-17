@@ -45,7 +45,7 @@
     speedRange = 0;
     
     
-    ary_Speed = [[NSMutableArray alloc]initWithObjects:@"30",@"60",@"90",@"50",@"80", nil];
+    ary_Speed = [[NSMutableArray alloc]initWithObjects:@"70",@"60",@"90",@"50",@"80", nil];
     
     mainTimer = [NSTimer scheduledTimerWithTimeInterval:20 repeats:YES block:^(NSTimer * _Nonnull timer)
                             {
